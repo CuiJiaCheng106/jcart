@@ -1,7 +1,7 @@
 package io.cjf.jcartstoreback.controller;
 
-import dto.in.*;
-import dto.out.CustomerGetProfileOutDTO;
+import io.cjf.jcartstoreback.dto.in.*;
+import io.cjf.jcartstoreback.dto.out.CustomerGetProfileOutDTO;
 
 import org.springframework.web.bind.annotation.*;
 

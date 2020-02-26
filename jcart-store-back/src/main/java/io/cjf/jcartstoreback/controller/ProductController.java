@@ -1,9 +1,9 @@
 package io.cjf.jcartstoreback.controller;
 
-import dto.in.ProductSearchInDTO;
-import dto.out.PageOutDTO;
-import dto.out.ProductListOutDTO;
-import dto.out.ProductShowOutDTO;
+import io.cjf.jcartstoreback.dto.in.ProductSearchInDTO;
+import io.cjf.jcartstoreback.dto.out.PageOutDTO;
+import io.cjf.jcartstoreback.dto.out.ProductListOutDTO;
+import io.cjf.jcartstoreback.dto.out.ProductShowOutDTO;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
