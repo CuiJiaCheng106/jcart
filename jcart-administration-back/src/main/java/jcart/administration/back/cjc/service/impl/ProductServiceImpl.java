@@ -8,6 +8,7 @@ import jcart.administration.back.cjc.dto.in.ProductCreateInDTO;
 import jcart.administration.back.cjc.dto.in.ProductUpdateInDTO;
 import jcart.administration.back.cjc.dao.ProductMapper;
 import jcart.administration.back.cjc.dto.out.ProductListOutDTO;
+import jcart.administration.back.cjc.dto.out.ProductShowOutDTO;
 import jcart.administration.back.cjc.po.Product;
 import jcart.administration.back.cjc.po.ProductDetail;
 import jcart.administration.back.cjc.service.ProductService;
@@ -106,5 +107,27 @@ public class ProductServiceImpl implements ProductService {
         PageHelper.startPage(pageNum,10);
         Page<ProductListOutDTO> Page = productMapper.search();
         return Page;
+    }
+
+    @Override
+    public ProductShowOutDTO getById(Integer productId) {
+        ProductShowOutDTO productShowOutDTO = new ProductShowOutDTO();
+        Product product = productMapper.selectByPrimaryKey(productId);
+        ProductDetail productDetail = productDetailMapper.selectByPrimaryKey(productId);
+        productShowOutDTO.setProductId(productId);
+        productShowOutDTO.setProductCode(product.getProductCode());
+        productShowOutDTO.setProductName(product.getProductName());
+        productShowOutDTO.setPrice(product.getPrice());
+        productShowOutDTO.setDiscount(product.getDiscount());
+        productShowOutDTO.setStatus(product.getStatus());
+        productShowOutDTO.setMainPicUrl(product.getMainPicUrl());
+        productShowOutDTO.setRewordPoints(product.getRewordPoints());
+        productShowOutDTO.setSortOrder(product.getSortOrder());
+        productShowOutDTO.setStockQuantity(product.getStockQuantity());
+        productShowOutDTO.setDescription(productDetail.getDescription());
+        String otherPicUrls = productDetail.getOtherPicUrls();
+        List<String> strings = JSON.parseArray(otherPicUrls, String.class);
+        productShowOutDTO.setOtherPicUrls(strings);
+        return productShowOutDTO;
     }
 }
