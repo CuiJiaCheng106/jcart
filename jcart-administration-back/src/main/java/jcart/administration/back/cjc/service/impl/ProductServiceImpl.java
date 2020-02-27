@@ -1,10 +1,13 @@
 package jcart.administration.back.cjc.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import jcart.administration.back.cjc.dao.ProductDetailMapper;
 import jcart.administration.back.cjc.dto.in.ProductCreateInDTO;
 import jcart.administration.back.cjc.dto.in.ProductUpdateInDTO;
 import jcart.administration.back.cjc.dao.ProductMapper;
+import jcart.administration.back.cjc.dto.out.ProductListOutDTO;
 import jcart.administration.back.cjc.po.Product;
 import jcart.administration.back.cjc.po.ProductDetail;
 import jcart.administration.back.cjc.service.ProductService;
@@ -96,5 +99,12 @@ public class ProductServiceImpl implements ProductService {
         productMapper.batchDelete(productIds);
         productDetailMapper.batchDelete(productIds);
 
+    }
+
+    @Override
+    public Page<ProductListOutDTO> search(Integer pageNum) {
+        PageHelper.startPage(pageNum,10);
+        Page<ProductListOutDTO> Page = productMapper.search();
+        return Page;
     }
 }

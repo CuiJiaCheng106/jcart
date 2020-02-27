@@ -1,7 +1,9 @@
 package jcart.administration.back.cjc.service;
 
+import com.github.pagehelper.Page;
 import jcart.administration.back.cjc.dto.in.ProductCreateInDTO;
 import jcart.administration.back.cjc.dto.in.ProductUpdateInDTO;
+import jcart.administration.back.cjc.dto.out.ProductListOutDTO;
 
 import java.util.List;
 
@@ -18,4 +20,6 @@ public interface ProductService {
     void delete(Integer productId);
 
     void batchDelete(List<Integer> productIds);
+
+    Page<ProductListOutDTO> search(Integer pageNum);
 }

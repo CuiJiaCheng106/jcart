@@ -1,5 +1,6 @@
 package jcart.administration.back.cjc.controller;
 
+import com.github.pagehelper.Page;
 import jcart.administration.back.cjc.dto.in.ProductCreateInDTO;
 import jcart.administration.back.cjc.dto.in.ProductSearchInDTO;
 import jcart.administration.back.cjc.dto.in.ProductUpdateInDTO;
@@ -26,34 +27,39 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/search")
-    public PageOutDTO<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO, @RequestParam Integer pageNum){
-        return  null;
+    public PageOutDTO<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO, @RequestParam Integer pageNum) {
+        Page<ProductListOutDTO> search = productService.search(pageNum);
+        PageOutDTO<ProductListOutDTO> pageOutDTO = new PageOutDTO<>();
+        pageOutDTO.setTotal((int) search.getTotal());
+        pageOutDTO.setPageNum(search.getPageNum());
+        pageOutDTO.setList(search);
+        return pageOutDTO;
     }
 
     @GetMapping("/getById")
-    public ProductShowOutDTO getById(@RequestParam Integer productId){
-        return  null;
+    public ProductShowOutDTO getById(@RequestParam Integer productId) {
+        return null;
     }
 
     @PostMapping("/create")
-    public Integer create(@RequestBody ProductCreateInDTO productCreateInDTO){
+    public Integer create(@RequestBody ProductCreateInDTO productCreateInDTO) {
         Integer productId = productService.create(productCreateInDTO);
         return productId;
     }
 
     @PostMapping("/update")
-    public void update(@RequestBody ProductUpdateInDTO productUpdateInDTO){
+    public void update(@RequestBody ProductUpdateInDTO productUpdateInDTO) {
         productService.update(productUpdateInDTO);
     }
 
     @PostMapping("/delete")
-    public void delete(@RequestBody Integer productId){
+    public void delete(@RequestBody Integer productId) {
         productService.delete(productId);
     }
 
 
     @PostMapping("/batchDelete")
-    public void batchDelete(@RequestBody List<Integer> productIds){
+    public void batchDelete(@RequestBody List<Integer> productIds) {
         productService.batchDelete(productIds);
     }
 }
