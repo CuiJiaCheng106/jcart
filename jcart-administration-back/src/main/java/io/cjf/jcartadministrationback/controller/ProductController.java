@@ -41,7 +41,7 @@ public class ProductController {
 
     @PostMapping("/update")
     public void update(@RequestBody ProductUpdateInDTO productUpdateInDTO){
-
+        productService.update(productUpdateInDTO);
     }
 
 }
