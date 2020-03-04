@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="io.cjf.jcartadministrationback.dao.AdministratorMapper">
-  <resultMap id="BaseResultMap" type="io.cjf.jcartadministrationback.po.Administrator">
+<mapper namespace="jcart.administration.back.cjc.dao.AdministratorMapper">
+  <resultMap id="BaseResultMap" type="jcart.administration.back.cjc.po.Administrator">
     <id column="administrator_id" jdbcType="INTEGER" property="administratorId" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="real_name" jdbcType="VARCHAR" property="realName" />
@@ -33,7 +33,7 @@
       #{item}
     </foreach>
   </delete>
-  <insert id="insert" parameterType="io.cjf.jcartadministrationback.po.Administrator">
+  <insert id="insert" parameterType="jcart.administration.back.cjc.po.Administrator">
     insert into jcart_administrator (administrator_id, username, real_name, 
       email, encrypted_password, status, 
       create_time, avatar_url)
@@ -41,7 +41,7 @@
       #{email,jdbcType=VARCHAR}, #{encryptedPassword,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
       #{createTime,jdbcType=TIMESTAMP}, #{avatarUrl,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="io.cjf.jcartadministrationback.po.Administrator" useGeneratedKeys="true" keyProperty="administratorId">
+  <insert id="insertSelective" parameterType="jcart.administration.back.cjc.po.Administrator" useGeneratedKeys="true" keyProperty="administratorId">
     insert into jcart_administrator
     <trim prefix="(" suffix=")" suffixOverrides=",">
 
@@ -92,7 +92,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="io.cjf.jcartadministrationback.po.Administrator">
+  <update id="updateByPrimaryKeySelective" parameterType="jcart.administration.back.cjc.po.Administrator">
     update jcart_administrator
     <set>
       <if test="username != null">
@@ -119,7 +119,7 @@
     </set>
     where administrator_id = #{administratorId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="io.cjf.jcartadministrationback.po.Administrator">
+  <update id="updateByPrimaryKey" parameterType="jcart.administration.back.cjc.po.Administrator">
     update jcart_administrator
     set username = #{username,jdbcType=VARCHAR},
       real_name = #{realName,jdbcType=VARCHAR},

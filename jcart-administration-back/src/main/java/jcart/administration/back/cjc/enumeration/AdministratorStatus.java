@@ -1,4 +1,4 @@
-package io.cjf.jcartadministrationback.enumeration;
+package jcart.administration.back.cjc.enumeration;
 
 public enum AdministratorStatus {
     Disable,
