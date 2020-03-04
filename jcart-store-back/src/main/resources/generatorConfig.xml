@@ -19,8 +19,8 @@
 
         <!--数据库链接信息-->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/jcart0224?serverTimezone=Asia/Shanghai" userId="root"
-                        password="123456">
+                        connectionURL="jdbc:mysql://localhost:3306/db?serverTimezone=Asia/Shanghai" userId="root"
+                        password="123">
         </jdbcConnection>
 
         <!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制-->
