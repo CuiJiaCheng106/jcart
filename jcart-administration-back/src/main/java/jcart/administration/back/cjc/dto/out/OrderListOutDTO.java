@@ -1,5 +1,9 @@
 package jcart.administration.back.cjc.dto.out;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.Date;
+
 /**
  * @Author CuiJiaCheng
  * @Description
@@ -11,8 +15,33 @@ public class OrderListOutDTO {
     private String customerName;
     private  Byte status;
     private Double totalPrice;
+    @JsonIgnore
+    private Date createTime;
     private Long createTimestamp;
+    @JsonIgnore
+    private Date updateTime;
     private Long updateTimestamp;
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public OrderListOutDTO(Date createTime, Date updateTime) {
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+    }
 
     public Integer getOrderId() {
         return orderId;
@@ -55,18 +84,12 @@ public class OrderListOutDTO {
     }
 
     public Long getCreateTimestamp() {
-        return createTimestamp;
+        return this.createTime==null?null:this.createTime.getTime();
     }
 
-    public void setCreateTimestamp(Long createTimestamp) {
-        this.createTimestamp = createTimestamp;
-    }
 
     public Long getUpdateTimestamp() {
-        return updateTimestamp;
+        return this.updateTime==null?null:this.updateTime.getTime();
     }
 
-    public void setUpdateTimestamp(Long updateTimestamp) {
-        this.updateTimestamp = updateTimestamp;
-    }
 }
