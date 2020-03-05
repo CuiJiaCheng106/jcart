@@ -1,5 +1,6 @@
 package jcart.administration.back.cjc.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import jcart.administration.back.cjc.dao.OrderDetailMapper;
@@ -9,9 +10,13 @@ import jcart.administration.back.cjc.dto.out.OrderShowOutDTO;
 import jcart.administration.back.cjc.po.Customer;
 import jcart.administration.back.cjc.po.Order;
 import jcart.administration.back.cjc.po.OrderDetail;
+import jcart.administration.back.cjc.service.CustomerService;
 import jcart.administration.back.cjc.service.OrderService;
+import jcart.administration.back.cjc.vo.OrderProductVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @Author CuiJiaCheng
@@ -27,6 +32,10 @@ public class OrderServiceImpl  implements OrderService {
     @Autowired
     private OrderDetailMapper orderDetailMapper;
 
+
+    @Autowired
+    private CustomerService customerService;
+
     @Override
     public Page<OrderListOutDTO> search(Integer pageNum) {
         PageHelper.startPage(pageNum,10);
@@ -37,7 +46,7 @@ public class OrderServiceImpl  implements OrderService {
 
     @Override
     public OrderShowOutDTO getById(Long orderId) {
-        Order order = orderMapper.selectByPrimaryKey(orderId);
+        Order order = orderMapper.selectByPrimaryKey(Math.toIntExact(orderId));
         OrderDetail orderDetail = orderDetailMapper.selectByPrimaryKey(orderId);
 
         OrderShowOutDTO orderShowOutDTO = new OrderShowOutDTO();

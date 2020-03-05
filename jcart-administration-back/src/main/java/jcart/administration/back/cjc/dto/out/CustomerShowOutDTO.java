@@ -1,10 +1,5 @@
 package jcart.administration.back.cjc.dto.out;
 
-/**
- * @Author CuiJiaCheng
- * @Description
- * @create 2020-02-25 14:34
- **/
 public class CustomerShowOutDTO {
     private Integer customerId;
     private String username;
@@ -14,18 +9,10 @@ public class CustomerShowOutDTO {
     private String email;
     private Byte status;
     private Long createTimestamp;
-    private Boolean newSubscribed;
+    private Boolean newsSubscribed;
     private Integer rewordPoints;
     private Integer defaultAddressId;
     private String defaultAddress;
-
-    public String getDefaultAddress() {
-        return defaultAddress;
-    }
-
-    public void setDefaultAddress(String defaultAddress) {
-        this.defaultAddress = defaultAddress;
-    }
 
     public Integer getCustomerId() {
         return customerId;
@@ -91,12 +78,12 @@ public class CustomerShowOutDTO {
         this.createTimestamp = createTimestamp;
     }
 
-    public Boolean getNewSubscribed() {
-        return newSubscribed;
+    public Boolean getNewsSubscribed() {
+        return newsSubscribed;
     }
 
-    public void setNewSubscribed(Boolean newSubscribed) {
-        this.newSubscribed = newSubscribed;
+    public void setNewsSubscribed(Boolean newsSubscribed) {
+        this.newsSubscribed = newsSubscribed;
     }
 
     public Integer getRewordPoints() {
@@ -113,5 +100,13 @@ public class CustomerShowOutDTO {
 
     public void setDefaultAddressId(Integer defaultAddressId) {
         this.defaultAddressId = defaultAddressId;
+    }
+
+    public String getDefaultAddress() {
+        return defaultAddress;
+    }
+
+    public void setDefaultAddress(String defaultAddress) {
+        this.defaultAddress = defaultAddress;
     }
 }

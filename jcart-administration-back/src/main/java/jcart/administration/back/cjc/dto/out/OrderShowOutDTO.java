@@ -1,5 +1,7 @@
 package jcart.administration.back.cjc.dto.out;
 
+import jcart.administration.back.cjc.vo.OrderProductVO;
+
 import java.util.List;
 
 /**
@@ -140,7 +142,10 @@ public class OrderShowOutDTO {
         return orderProducts;
     }
 
-    public void setOrderProducts(List<OrderProductShowOutDTO> orderProducts) {
+    public void setOrderProducts(List<OrderProductVO> orderProducts) {
         this.orderProducts = orderProducts;
+    }
+
+    public void setCustomerName(String realName) {
     }
 }

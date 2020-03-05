@@ -1,6 +1,7 @@
 package jcart.administration.back.cjc.service;
 
 import com.github.pagehelper.Page;
+import jcart.administration.back.cjc.dto.in.CustomerSetStatusInDTO;
 import jcart.administration.back.cjc.po.Customer;
 
 /**
@@ -12,4 +13,6 @@ public interface CustomerService {
     Page<Customer> search(Integer pageNum);
 
     Customer getById(Integer customerId);
+
+    void setStatus(CustomerSetStatusInDTO customerSetStatusInDTO);
 }
