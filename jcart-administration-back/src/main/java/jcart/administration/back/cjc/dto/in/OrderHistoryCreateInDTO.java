@@ -11,7 +11,7 @@ public class OrderHistoryCreateInDTO {
     private  String comment;
     private  Boolean customerNotified;
 
-    public Long getOrderId() {
+    public Integer getOrderId() {
         return orderId;
     }
 
