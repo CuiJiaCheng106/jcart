@@ -1,16 +1,22 @@
 package io.cjc.jcartstoreback.controller;
 
+import com.github.pagehelper.Page;
 import io.cjc.jcartstoreback.dto.in.ReturnApplyInDTO;
 import io.cjc.jcartstoreback.dto.out.PageOutDTO;
+import io.cjc.jcartstoreback.dto.out.ReturnHistoryListOutDTO;
 import io.cjc.jcartstoreback.dto.out.ReturnListOutDTO;
 import io.cjc.jcartstoreback.dto.out.ReturnShowOutDTO;
 import io.cjc.jcartstoreback.enumeration.ReturnStatus;
 import io.cjc.jcartstoreback.po.Return;
+import io.cjc.jcartstoreback.po.ReturnHistory;
+import io.cjc.jcartstoreback.service.ReturnHistoryService;
 import io.cjc.jcartstoreback.service.ReturnService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/return")
@@ -18,6 +24,9 @@ public class ReturnController {
 
     @Autowired
     private ReturnService returnService;
+
+    @Autowired
+    private ReturnHistoryService returnHistoryService;
 
 
     @PostMapping("/apply")
@@ -48,13 +57,60 @@ public class ReturnController {
 
     @GetMapping("/getList")
     public PageOutDTO<ReturnListOutDTO> getList(@RequestAttribute Integer customerId,
-                                                @RequestParam Integer pageNum){
-        return null;
+                                                @RequestParam(required = false,defaultValue = "1") Integer pageNum){
+        Page<Return> page = returnService.getPageByCustomerId(customerId, pageNum);
+        List<ReturnListOutDTO> returnListOutDTOS = page.stream().map(aReturn -> {
+            ReturnListOutDTO returnListOutDTO = new ReturnListOutDTO();
+            returnListOutDTO.setReturnId(aReturn.getReturnId());
+            returnListOutDTO.setOrderId(aReturn.getOrderId());
+            returnListOutDTO.setCustomerId(aReturn.getCustomerId());
+            returnListOutDTO.setCustomerName(aReturn.getCustomerName());
+            returnListOutDTO.setStatus(aReturn.getStatus());
+            returnListOutDTO.setCreateTimestamp(aReturn.getCreateTime().getTime());
+            return returnListOutDTO;
+        }).collect(Collectors.toList());
+
+        PageOutDTO<ReturnListOutDTO> pageOutDTO = new PageOutDTO<>();
+        pageOutDTO.setTotal(page.getTotal());
+        pageOutDTO.setPageSize(page.getPageSize());
+        pageOutDTO.setPageNum(page.getPageNum());
+        pageOutDTO.setList(returnListOutDTOS);
+
+        return pageOutDTO;
     }
 
     @GetMapping("/getById")
     public ReturnShowOutDTO getById(@RequestParam Integer returnId){
-        return null;
+        Return aReturn = returnService.getById(returnId);
+
+        ReturnShowOutDTO returnShowOutDTO = new ReturnShowOutDTO();
+        returnShowOutDTO.setReturnId(aReturn.getReturnId());
+        returnShowOutDTO.setOrderTimestamp(aReturn.getOrderTime().getTime());
+        returnShowOutDTO.setCustomerName(aReturn.getCustomerName());
+        returnShowOutDTO.setMobile(aReturn.getMobile());
+        returnShowOutDTO.setEmail(aReturn.getEmail());
+        returnShowOutDTO.setStatus(aReturn.getStatus());
+        returnShowOutDTO.setAction(aReturn.getAction());
+        returnShowOutDTO.setProductCode(aReturn.getProductCode());
+        returnShowOutDTO.setProductName(aReturn.getProductName());
+        returnShowOutDTO.setQuantity(aReturn.getQuantity());
+        returnShowOutDTO.setReason(aReturn.getReason());
+        returnShowOutDTO.setComment(aReturn.getComment());
+        returnShowOutDTO.setOpened(aReturn.getOpened());
+        returnShowOutDTO.setCreateTimestamp(aReturn.getCreateTime().getTime());
+        returnShowOutDTO.setUpdateTimestamp(aReturn.getUpdateTime().getTime());
+
+        List<ReturnHistory> returnHistories = returnHistoryService.getByReturnId(returnId);
+        List<ReturnHistoryListOutDTO> returnHistoryListOutDTOS = returnHistories.stream().map(returnHistory -> {
+            ReturnHistoryListOutDTO returnHistoryListOutDTO = new ReturnHistoryListOutDTO();
+            returnHistoryListOutDTO.setTimestamp(returnHistory.getTime().getTime());
+            returnHistoryListOutDTO.setReturnStatus(returnHistory.getReturnStatus());
+            returnHistoryListOutDTO.setComment(returnHistory.getComment());
+            return returnHistoryListOutDTO;
+        }).collect(Collectors.toList());
+        returnShowOutDTO.setReturnHistories(returnHistoryListOutDTOS);
+
+        return returnShowOutDTO;
     }
 
     @PostMapping("/cancel")
