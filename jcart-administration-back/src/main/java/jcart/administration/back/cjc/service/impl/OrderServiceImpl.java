@@ -53,7 +53,6 @@ public class OrderServiceImpl  implements OrderService {
         orderShowOutDTO.setOrderId(orderId);
         orderShowOutDTO.setCustomerId(order.getCustomerId());
         Customer customer = customerService.getById(order.getCustomerId());
-        orderShowOutDTO.setCustomerName(customer.getRealName());
         orderShowOutDTO.setStatus(order.getStatus());
         orderShowOutDTO.setTotalPrice(order.getTotalPrice());
         orderShowOutDTO.setRewordPoints(order.getRewordPoints());

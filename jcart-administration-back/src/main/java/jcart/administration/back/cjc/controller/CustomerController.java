@@ -70,7 +70,7 @@ public class CustomerController {
         customerShowOutDTO.setAvatarUrl(customer.getAvatarUrl());
         customerShowOutDTO.setStatus(customer.getStatus());
         customerShowOutDTO.setRewordPoints(customer.getRewordPoints());
-        customerShowOutDTO.setNewSubscribed(customer.getNewsSubscribed());
+        customerShowOutDTO.setNewsSubscribed(customer.getNewsSubscribed());
         customerShowOutDTO.setCreateTimestamp(customer.getCreateTime().getTime());
         customerShowOutDTO.setDefaultAddressId(customer.getDefaultAddressId());
 

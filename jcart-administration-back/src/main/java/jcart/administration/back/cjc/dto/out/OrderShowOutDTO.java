@@ -24,7 +24,6 @@ public class OrderShowOutDTO {
     private String invoiceAddress;
     private Double invoicePrice;
     private String comment;
-    private List<OrderProductShowOutDTO> orderProducts;
 
     public Long getOrderId() {
         return orderId;
@@ -138,14 +137,6 @@ public class OrderShowOutDTO {
         this.comment = comment;
     }
 
-    public List<OrderProductShowOutDTO> getOrderProducts() {
-        return orderProducts;
-    }
-
-    public void setOrderProducts(List<OrderProductVO> orderProducts) {
-        this.orderProducts = orderProducts;
-    }
-
-    public void setCustomerName(String realName) {
+    public void setOrderProducts(List<OrderProductVO> orderProductVOS) {
     }
 }
