@@ -34,7 +34,7 @@ public class ProductController {
         pageOutDTO.setTotal((int) search.getTotal());
         pageOutDTO.setPageNum(search.getPageNum());
         pageOutDTO.setList(search);
-        
+
 
 
         return pageOutDTO;
