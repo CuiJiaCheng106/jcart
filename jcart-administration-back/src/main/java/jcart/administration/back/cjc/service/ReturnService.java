@@ -1,8 +1,8 @@
-package io.cjf.jcartadministrationback.service;
+package jcart.administration.back.cjc.service;
 
 import com.github.pagehelper.Page;
-import io.cjf.jcartadministrationback.dto.in.ReturnSearchInDTO;
-import io.cjf.jcartadministrationback.po.Return;
+import jcart.administration.back.cjc.dto.in.ReturnSearchInDTO;
+import jcart.administration.back.cjc.po.Return;
 
 public interface ReturnService {
 
