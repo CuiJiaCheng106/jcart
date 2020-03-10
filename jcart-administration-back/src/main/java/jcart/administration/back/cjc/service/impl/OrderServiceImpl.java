@@ -5,6 +5,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import jcart.administration.back.cjc.dao.OrderDetailMapper;
 import jcart.administration.back.cjc.dao.OrderMapper;
+import jcart.administration.back.cjc.dto.in.OrderSearchInDTO;
 import jcart.administration.back.cjc.dto.out.OrderListOutDTO;
 import jcart.administration.back.cjc.dto.out.OrderShowOutDTO;
 import jcart.administration.back.cjc.po.Customer;
@@ -16,6 +17,7 @@ import jcart.administration.back.cjc.vo.OrderProductVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,9 +39,14 @@ public class OrderServiceImpl  implements OrderService {
     private CustomerService customerService;
 
     @Override
-    public Page<OrderListOutDTO> search(Integer pageNum) {
+    public Page<OrderListOutDTO> search(OrderSearchInDTO orderSearchInDTO, Integer pageNum) {
         PageHelper.startPage(pageNum,10);
-        Page<OrderListOutDTO> page = orderMapper.search();
+        Page<OrderListOutDTO> page = orderMapper.search(orderSearchInDTO.getOrderId(),
+                orderSearchInDTO.getStatus(),
+                orderSearchInDTO.getTotalPrice(),
+                orderSearchInDTO.getCustomerName(),
+                orderSearchInDTO.getStartTimestamp() == null ? null : new Date(orderSearchInDTO.getStartTimestamp()),
+                orderSearchInDTO.getEndTimestamp() == null ? null : new Date(orderSearchInDTO.getEndTimestamp()));
 
         return page;
     }
