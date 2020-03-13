@@ -39,6 +39,12 @@ Vue.component('jc-product-search-page', {
                 <template slot-scope="scope">
                     {{statuses[scope.row.status].label}}
                 </template>
+                
+            </el-table-column>
+            <el-table-column  label="操作">
+                <template slot-scope="scope">
+                    <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                </template>
             </el-table-column>
         </el-table>
 
@@ -71,6 +77,10 @@ Vue.component('jc-product-search-page', {
             console.log('search click');
             this.pageNum = 1;
             this.searchProduct();
+        },
+        handleEdit(index, row) {
+            console.log('product edit click', index, row);
+            location.href = 'product-update.html?productId=' + row.productId;
         },
         handleClearClick() {
             console.log('clear click');
