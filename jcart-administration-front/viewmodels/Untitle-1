@@ -1,0 +1,21 @@
+[   
+    {
+        "productId":1234,
+        "productCode":"pc001",
+        "productName":"Iphone",
+        "mainPicUrl":"http://aaa.jpg",
+        "unitPrice:4999.99,
+        "quantity":1,
+        "totalPrice":4999.99
+    },
+    {
+        "productId":1235,
+        "productCode":"pc002",
+        "productName":"iMac",
+        "mainPicUrl":"http://bbb.jpg",
+        "unitPrice:8999.99,
+        "quantity":2,
+        "totalPrice":17999.99
+    }
+    
+]
