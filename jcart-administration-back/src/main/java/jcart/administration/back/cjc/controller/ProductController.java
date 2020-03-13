@@ -9,6 +9,7 @@ import jcart.administration.back.cjc.dto.out.ProductShowOutDTO;
 import jcart.administration.back.cjc.dto.out.ProductListOutDTO;
 import jcart.administration.back.cjc.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,12 +25,15 @@ import java.util.List;
 @CrossOrigin
 public class ProductController {
 
+
+
     @Autowired
     private ProductService productService;
 
     @GetMapping("/search")
     public PageOutDTO<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO, @RequestParam Integer pageNum) {
-        Page<ProductListOutDTO> search = productService.search(pageNum);
+        Page<ProductListOutDTO> search = productService.search(productSearchInDTO,pageNum);
+
         PageOutDTO<ProductListOutDTO> pageOutDTO = new PageOutDTO<>();
         pageOutDTO.setTotal((int) search.getTotal());
         pageOutDTO.setPageNum(search.getPageNum());
