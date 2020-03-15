@@ -180,4 +180,4 @@ Vue.component('jc-product-update-page', {
                 });
         },
         getProductById() {
-            axios.
+            axios
