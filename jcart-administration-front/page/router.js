@@ -6,7 +6,22 @@ const routes = [
     { path: '/return/search', component: ReturnSearchRoutePage },
     { path: '/customer/show/:customerId', component: CustomerShowRoutePage },
     { path: '/administrator/index', component: AdministratorindexRoutePage },
-    { path: '/product/update:/productId', component: ProductUpdateRoutePage }
+    { path: '/product/update:/productId', component: ProductUpdateRoutePage },
+    { path:'/return/edit/:returnId',component:ReturnEditRoutePage},
+    {
+        path: '/return/edit/:returnId',
+        component: ReturnEditRoutePage,
+        children: [
+            {
+                path: 'show',
+                component: ReturnShowRoutePage
+            },
+            {
+                path: 'history',
+                component: ReturnHistoryIndexRoutePage
+            }
+        ]
+    }  
 ];
 
 const router = new VueRouter({
