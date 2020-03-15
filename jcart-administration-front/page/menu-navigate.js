@@ -12,7 +12,7 @@ var app = new Vue({
                 index: "1",
                 icon: "el-icon-goods",
                 menuItems: [
-                    { name: "商品列表", index: "1-1" }
+                    { name: "商品列表", index: "1-1" ,route:'/product/search'}
                 ]
             },
             {
@@ -20,7 +20,7 @@ var app = new Vue({
                 index: "2",
                 icon: "el-icon-s-custom",
                 menuItems: [
-                    { name: "客户列表", index: "2-2" }
+                    { name: "客户列表", index: "2-2" ,route:'/customer/search'}
                 ]
             },
             {
@@ -43,18 +43,22 @@ var app = new Vue({
         ]
     },
     methods: {
-        handleMenuItemSelect(index, indexPath) {
-            console.log('menu item selected', index, indexPath);
-            this.selectMainPage = index;
-            switch (index) {
-                case '1-1':
-                    router.push('/product/search');
-                    break;
+        //handleMenuItemSelect(index, indexPath) {
+        //    console.log('menu item selected', index, indexPath);
+        //    this.selectMainPage = index;
+        //    switch (index) {
+        //        case '1-1':
+        //            router.push('/product/search');
+        //            break;
+        //        case '2-2':
+        //            router.push('/customer/search');
+        //           break;
+    
 
-                default:
-                    break;
-            }
+         //       default:
+         //           break;
+         //   }
             // this.selectMainPage = index;
-        }
+        //}
     }
 }) 
