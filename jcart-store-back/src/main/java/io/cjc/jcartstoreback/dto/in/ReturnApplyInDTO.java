@@ -13,7 +13,7 @@ public class ReturnApplyInDTO {
     private Boolean opened;
     private String comment;
 
-    public Long getOrderId() {
+    public Integer getOrderId() {
         return orderId;
     }
 
