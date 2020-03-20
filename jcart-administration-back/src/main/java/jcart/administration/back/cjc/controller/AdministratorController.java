@@ -6,12 +6,14 @@ import com.github.pagehelper.Page;
 import jcart.administration.back.cjc.dto.in.*;
 import jcart.administration.back.cjc.dto.out.*;
 import jcart.administration.back.cjc.enumeration.AdministratorStatus;
+import jcart.administration.back.cjc.mq.EmailEvent;
 import jcart.administration.back.cjc.util.EmailUtil;
 import jcart.administration.back.cjc.util.JWTUtil;
 import jcart.administration.back.cjc.constant.ClientExceptionConstant;
 import jcart.administration.back.cjc.exception.ClientException;
 import jcart.administration.back.cjc.po.Administrator;
 import jcart.administration.back.cjc.service.AdministratorService;
+import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -37,7 +39,8 @@ public class AdministratorController {
     @Autowired
     private JWTUtil jwtUtil;
 
-
+    @Autowired
+    private RocketMQTemplate rocketMQTemplate;
 
     @Autowired
     private SecureRandom secureRandom;
@@ -103,8 +106,12 @@ public class AdministratorController {
     public void getPwdResetCode(@RequestParam String email) {
         byte[] bytes = secureRandom.generateSeed(3);
         String hex = DatatypeConverter.printHexBinary(bytes);
-        emailUtil.send(fromEmail,email,"管理员密码重置",hex);
-
+        //emailUtil.send(fromEmail,email,"管理员密码重置",hex);
+        EmailEvent emailEvent = new EmailEvent();
+        emailEvent.setToEmail(email);
+        emailEvent.setTitle("管理员密码重置");
+        emailEvent.setContent(hex);
+        rocketMQTemplate.convertAndSend("SendPwdResetByEmail",emailEvent);
 
         emailPwdResetCodeMap.put(email, hex);
 
