@@ -5,6 +5,7 @@ import io.cjc.jcartstoreback.dto.in.ProductSearchInDTO;
 import io.cjc.jcartstoreback.dto.out.PageOutDTO;
 import io.cjc.jcartstoreback.dto.out.ProductListOutDTO;
 import io.cjc.jcartstoreback.dto.out.ProductShowOutDTO;
+import io.cjc.jcartstoreback.service.ProductOperationService;
 import io.cjc.jcartstoreback.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,9 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private ProductOperationService productOperationService;
 
     @GetMapping("/search")
     public PageOutDTO<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO,
@@ -35,6 +39,7 @@ public class ProductController {
     @GetMapping("/getById")
     public ProductShowOutDTO getById(@RequestParam Integer productId){
         ProductShowOutDTO productShowOutDTO = productService.getShowById(productId);
+        productOperationService.count(productId);
         return productShowOutDTO;
     }
 
