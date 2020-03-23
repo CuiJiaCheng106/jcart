@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86881543-1bd8-4a36-83f3-2566097c5028" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../jcart-store-back/src/main/java/io/cjc/jcartstoreback/scheduler/ProductScheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcart-store-back/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../jcart-store-back/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcart-store-back/src/main/java/io/cjc/jcartstoreback/JcartStoreBackApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jcart-store-back/src/main/java/io/cjc/jcartstoreback/JcartStoreBackApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jcart-store-back/src/main/java/io/cjc/jcartstoreback/enumeration/ProductStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../jcart-store-back/src/main/java/io/cjc/jcartstoreback/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jcart-store-back/src/main/java/io/cjc/jcartstoreback/controller/ProductController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../jcart-store-back/src/main/java/io/cjc/jcartstoreback/dao/ProductMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jcart-store-back/src/main/java/io/cjc/jcartstoreback/dao/ProductMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcart-store-back/src/main/java/io/cjc/jcartstoreback/dao/ProductOperationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jcart-store-back/src/main/java/io/cjc/jcartstoreback/dao/ProductOperationMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcart-store-back/src/main/java/io/cjc/jcartstoreback/service/ProductOperationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jcart-store-back/src/main/java/io/cjc/jcartstoreback/service/ProductOperationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcart-store-back/src/main/java/io/cjc/jcartstoreback/service/impl/ProductOperationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jcart-store-back/src/main/java/io/cjc/jcartstoreback/service/impl/ProductOperationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcart-store-back/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../jcart-store-back/src/main/resources/application-dev.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcart-store-back/src/main/resources/io/cjc/jcartstoreback/dao/ProductOperationMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../jcart-store-back/src/main/resources/io/cjc/jcartstoreback/dao/ProductOperationMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jcart-store-back/src/main/java/io/cjc/jcartstoreback/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jcart-store-back/src/main/java/io/cjc/jcartstoreback/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jcart-store-back/src/main/java/io/cjc/jcartstoreback/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jcart-store-back/src/main/java/io/cjc/jcartstoreback/service/impl/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jcart-store-back/src/main/resources/io/cjc/jcartstoreback/dao/ProductMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../jcart-store-back/src/main/resources/io/cjc/jcartstoreback/dao/ProductMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -96,7 +92,7 @@
       <workItem from="1584704043396" duration="3106000" />
       <workItem from="1584851212723" duration="659000" />
       <workItem from="1584958813683" duration="1221000" />
-      <workItem from="1584960632398" duration="1727000" />
+      <workItem from="1584960632398" duration="2042000" />
     </task>
     <servers />
   </component>
