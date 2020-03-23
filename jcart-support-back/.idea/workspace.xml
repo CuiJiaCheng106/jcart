@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86881543-1bd8-4a36-83f3-2566097c5028" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../jcart-store-back/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../jcart-store-back/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jcart-store-back/src/main/java/io/cjc/jcartstoreback/mq/HotProductDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../jcart-store-back/src/main/java/io/cjc/jcartstoreback/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jcart-store-back/src/main/java/io/cjc/jcartstoreback/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jcart-store-back/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../jcart-store-back/src/main/resources/application-dev.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -87,7 +88,8 @@
       <updated>1584704040380</updated>
       <workItem from="1584704043396" duration="3106000" />
       <workItem from="1584851212723" duration="659000" />
-      <workItem from="1584958813683" duration="1087000" />
+      <workItem from="1584958813683" duration="1221000" />
+      <workItem from="1584960632398" duration="767000" />
     </task>
     <servers />
   </component>
