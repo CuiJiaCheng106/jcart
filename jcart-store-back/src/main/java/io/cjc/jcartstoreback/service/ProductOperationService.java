@@ -1,5 +1,9 @@
 package io.cjc.jcartstoreback.service;
 
+import io.cjc.jcartstoreback.dto.out.ProductListOutDTO;
+
+import java.util.List;
+
 /**
  * @Author CuiJiaCheng
  * @Description
@@ -9,5 +13,6 @@ public interface ProductOperationService {
 
     void  count(Integer productId);
 
+    List<ProductListOutDTO> selectHotProduct();
 
 }
