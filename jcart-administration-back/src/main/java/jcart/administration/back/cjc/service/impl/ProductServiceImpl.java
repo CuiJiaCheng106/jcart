@@ -10,6 +10,8 @@ import jcart.administration.back.cjc.dto.in.ProductUpdateInDTO;
 import jcart.administration.back.cjc.dao.ProductMapper;
 import jcart.administration.back.cjc.dto.out.ProductListOutDTO;
 import jcart.administration.back.cjc.dto.out.ProductShowOutDTO;
+import jcart.administration.back.cjc.es.doc.ProductDoc;
+import jcart.administration.back.cjc.es.repo.ProductRepo;
 import jcart.administration.back.cjc.po.Product;
 import jcart.administration.back.cjc.po.ProductDetail;
 import jcart.administration.back.cjc.service.ProductService;
@@ -34,6 +36,9 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductDetailMapper productDetailMapper;
 
+    @Autowired
+    private ProductRepo productRepo;
+
     @Override
     public Integer create(ProductCreateInDTO productCreateInDTO) {
         Product product = new Product();
@@ -57,7 +62,12 @@ public class ProductServiceImpl implements ProductService {
         List<String> otherPicUrls = productCreateInDTO.getOtherPicUrls();
         productDetail.setOtherPicUrls(JSON.toJSONString(otherPicUrls));
         productDetailMapper.insertSelective(productDetail);
-
+        ProductDoc productDoc = new ProductDoc();
+        productDoc.setProductId(productId);
+        productDoc.setProductCode(productCreateInDTO.getProductCode());
+        productDoc.setProductName(productCreateInDTO.getProductName());
+        productDoc.setProductAbstract(productCreateInDTO.getProductAbstract());
+        ProductDoc save = productRepo.save(productDoc);
 
         return productId;
     }
@@ -98,7 +108,7 @@ public class ProductServiceImpl implements ProductService {
     public void batchDelete(List<Integer> productIds) {
         productMapper.batchDelete(productIds);
         productDetailMapper.batchDelete(productIds);
-
+        productRepo.delete((ProductDoc) productIds);
     }
 
     @Override

@@ -6,6 +6,8 @@ import io.cjc.jcartstoreback.dto.in.ProductSearchInDTO;
 import io.cjc.jcartstoreback.dto.out.PageOutDTO;
 import io.cjc.jcartstoreback.dto.out.ProductListOutDTO;
 import io.cjc.jcartstoreback.dto.out.ProductShowOutDTO;
+import io.cjc.jcartstoreback.es.doc.ProductDoc;
+import io.cjc.jcartstoreback.es.repo.ProductRepo;
 import io.cjc.jcartstoreback.mq.HotProductDTO;
 import io.cjc.jcartstoreback.po.ProductOperation;
 import io.cjc.jcartstoreback.service.ProductOperationService;
@@ -26,6 +28,9 @@ public class ProductController {
     private ProductService productService;
 
     @Autowired
+    private ProductRepo productRepo;
+
+    @Autowired
     private ProductOperationService productOperationService;
 
     @Autowired
@@ -37,6 +42,9 @@ public class ProductController {
     @GetMapping("/search")
     public PageOutDTO<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO,
                                                 @RequestParam(required = false, defaultValue = "1") Integer pageNum){
+        String keyword = productSearchInDTO.getKeyword();
+        List<ProductDoc> productDocs = productRepo.findByProductNameLikeOrProductAbstractLike(keyword, keyword);
+
         Page<ProductListOutDTO> page = productService.search(productSearchInDTO,pageNum);
         PageOutDTO<ProductListOutDTO> pageOutDTO = new PageOutDTO<>();
         pageOutDTO.setTotal(page.getTotal());
